@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Building a Fitness Routine at 21</title>
+
+<style>
+/* ===================================================
+1) VARIABLES & RESET
+- CSS variables store design tokens for consistent styling
+- Box-sizing reset ensures padding/border don't affect width
+=================================================== */
+:root{
+  --ink:#111;        
+  --muted:#555;      
+  --bg:#8ba5d6;      
+  --card:#bfd6e5;       
+  --line: rgba(0,0,0,.12);
+  --shadow: 0 8px 20px rgba(0,0,0,.05);
+  --radius: 12px;    
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===================================================
+2) BODY STYLES
+- Mobile-first design
+- clamp() ensures readable font sizes on all devices
+=================================================== */
+body {
+  font-family: 'Arial', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: clamp(16px, 1.2vw, 18px); /* body text 16–18px */
+  line-height: 1.6; 
+  padding: clamp(16px, 3vw, 32px); /* responsive padding */
+}
+
+/* ===================================================
+3) CONTAINER
+- Centers content and limits width for readability
+=================================================== */
+.container {
+  max-width: 960px; 
+  margin: 0 auto;   
+}
+
+/* ===================================================
+4) TYPOGRAPHY SCALE
+- Using clamp() for responsive headings and small text
+=================================================== */
+h1 {
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: bold;
+  line-height: 1.2;
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: clamp(22px, 2.5vw, 36px);
+  line-height: 1.25;
+  margin-bottom: 10px;
+}
+
+h3 {
+  font-size: clamp(18px, 1.8vw, 24px);
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+
+p {
+  color: var(--muted);
+  margin-bottom: 12px;
+  max-width: 65ch;
+  line-height: 1.6;
+}
+
+.small {
+  font-size: clamp(12px, 1vw, 14px);
+  color: var(--muted);
+}
+
+/* ===================================================
+5) HERO SECTION
+- White card with shadow and padding
+- Responsive padding using clamp()
+=================================================== */
+.hero {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: clamp(16px, 2.5vw, 24px);
+  box-shadow: var(--shadow);
+  margin-bottom: clamp(16px, 2.5vw, 24px);
+}
+
+/* ===================================================
+6) GRID CARDS
+- Mobile-first single column, scales to 2/3 columns on larger screens
+=================================================== */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: clamp(14px, 2vw, 18px);
+  box-shadow: var(--shadow);
+}
+
+@media (min-width: 720px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 980px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ===================================================
+7) FOOTER
+- Small text with border-top
+=================================================== */
+footer {
+  margin-top: 18px;
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<!-- HERO / INTRO -->
+<section class="hero">
+  <h1>Build a Strong Fitness Routine</h1>
+<p>
+  Starting a fitness routine is the best way to improve strength, endurance, and overall health. A balanced program of workouts, recovery, and nutrition helps you stay energized and progress consistently over time.
+</p>
+</section>
+
+<!-- FITNESS CARDS -->
+<section>
+  <h2>Key Components of a Fitness Routine</h2>
+  <div class="grid">
+    <article class="card">
+      <h3>Strength Training Basics</h3>
+      <p>
+        Focus on compound lifts like squats, deadlifts, and bench presses. They target multiple muscle groups at once, helping you build strength efficiently. Start with lighter weights to master form.
+      </p>
+      <p class="small">Tip: Proper form prevents injury and accelerates progress.</p>
+    </article>
+
+    <article class="card">
+      <h3>Cardio and Endurance</h3>
+      <p>
+        Incorporate running, cycling, or HIIT sessions 2-3 times per week. Cardio improves heart health, supports fat loss, and complements your strength workouts for a balanced routine.
+      </p>
+      <p class="small">Tip: High-intensity intervals save time while boosting endurance.</p>
+    </article>
+
+    <article class="card">
+      <h3>Flexibility and Recovery</h3>
+      <p>
+        Stretching, foam rolling, and yoga help prevent injuries and improve performance. Schedule rest days so muscles have time to repair and grow stronger.
+      </p>
+      <p class="small">Tip: Never skip recovery - it's part of the workout.</p>
+    </article>
+
+    <article class="card">
+      <h3>Nutrition and Consistency</h3>
+      <p>
+        Fuel your body with balanced meals, lean protein, and plenty of water. Consistency beats perfection - focus on building habits that are easy to maintain long-term.
+      </p>
+      <p class="small">Tip: Track your meals and workouts to stay accountable.</p>
+    </article>
+  </div>
+</section>
+
+<!-- REFLECTION -->
+<section>
+  <h2>Reflection</h2>
+  <p>
+    For H1, I used <strong>min 28px, preferred 4vw, max 48px</strong> so the heading is bold and readable on mobile phones but not overwhelming on large desktops. I tested by resizing my browser from phone (~375px) to tablet (~768px) to desktop (~1440px), making sure all headings and body text remained comfortable to read and visually balanced.
+  </p>
+</section>
+
+<footer>
+  <p class="small">Created by: Yididiya Meresa • 2026</p>
+</footer>
+
+</div>
+</body>
+</html>
